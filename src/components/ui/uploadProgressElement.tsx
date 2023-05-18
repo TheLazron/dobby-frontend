@@ -1,4 +1,4 @@
-import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
+import { CircularProgress } from "@chakra-ui/react";
 
 interface UploadProgressElementProps {
   progress: number;
@@ -6,9 +6,7 @@ interface UploadProgressElementProps {
 
 const UploadProgressElement = ({ progress }: UploadProgressElementProps) => {
   return (
-    <CircularProgress value={progress} color="brand.primary">
-      <CircularProgressLabel>{progress}%</CircularProgressLabel>
-    </CircularProgress>
+    <CircularProgress value={progress} color="brand.primary"></CircularProgress>
   );
 };
 

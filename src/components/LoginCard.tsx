@@ -28,7 +28,7 @@ const LoginCard = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     console.log("data", data);
     await logIn(data.email, data.password);
-    navigate("/my-profile/");
+    navigate("/dashboard/");
   };
 
   return (

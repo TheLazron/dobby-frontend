@@ -22,7 +22,7 @@ const makeAuthenticatedRequest = async (
 
     const response = await axios({
       method: method,
-      url: url,
+      url: "url",
       data: data,
       headers: { Authorization: "Bearer " + token },
     });
@@ -34,4 +34,26 @@ const makeAuthenticatedRequest = async (
   }
 };
 
-export { makeAxiosPostRequest, makeAuthenticatedRequest };
+const uploadImageRequest = async (
+  data: any,
+  method: string,
+  token: string,
+  progressCallback: (percentage: number) => void
+) => {
+  await axios({
+    method,
+    url: "http://localhost:3700/upload-image",
+    data,
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "multipart/form-data",
+    },
+    onUploadProgress: (progressEvent) => {
+      const percentage = Math.round(
+        (progressEvent.loaded * 100) / progressEvent.total!
+      );
+      progressCallback(percentage);
+    },
+  });
+};
+export { makeAxiosPostRequest, makeAuthenticatedRequest, uploadImageRequest };

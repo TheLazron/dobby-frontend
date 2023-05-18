@@ -11,8 +11,8 @@ interface AuthProviderProps {
 export interface loggedUser {
   name?: string;
   id: string;
-  profileUrl?: string;
-  blogCount?: number;
+
+  imageCount?: number;
   email?: string;
 }
 

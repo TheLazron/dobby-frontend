@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Heading } from "@chakra-ui/react";
 import UserProfileHeader from "../components/UserProfileHeader";
+import AddImageModal from "../components/AddImageModal";
 
 const Dashboard = () => {
   return (
@@ -17,8 +18,8 @@ const Dashboard = () => {
         <UserProfileHeader email="dmd" username="dmd" imageCount={4} />
       </Box>
       <Flex mt={5} justifyContent={"space-between"} alignItems="center" mx={20}>
-        <Heading>My Image</Heading>
-        <Button>+ Add New Image</Button>
+        <Heading color="brand.secondary">My Images</Heading>
+        <AddImageModal />
       </Flex>
     </Flex>
   );
