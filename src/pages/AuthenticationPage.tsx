@@ -9,7 +9,7 @@ const AuthPage = (): JSX.Element => {
       justifyContent={"center"}
       alignItems={"center"}
       position={"relative"}
-      bgImage="https://images.unsplash.com/photo-1678981432720-c6784ffbb4af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80"
+      bgImage="https://images.unsplash.com/photo-1517322479358-df90f951f87d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
       backgroundSize="cover"
       backgroundPosition="center"
     >

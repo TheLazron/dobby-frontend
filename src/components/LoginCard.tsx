@@ -70,10 +70,11 @@ const LoginCard = () => {
 
               <Stack mt={4}>
                 <Button
-                  bg={"brand.secondary"}
+                  bg={"brand.primary"}
                   color={"white"}
                   _hover={{
-                    bg: "brand.secondary",
+                    bg: "brand.primary",
+                    opacity: 0.4,
                   }}
                   type="submit"
                 >

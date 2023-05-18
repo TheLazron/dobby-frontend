@@ -30,7 +30,6 @@ let navlink: any;
 
 const Navbar = () => {
   const NAV_ITEMS: Array<NavItem> = [
-    { label: "Blog", href: "/home", variant: "ghost" },
     {
       label: "Sign Up",
       href: "/auth/signup",
@@ -48,10 +47,10 @@ const Navbar = () => {
           (item) => item.label !== "Sign Up" && item.label !== "Sign In"
         ),
         {
-          label: "My Profile",
-          href: "/my-profile/",
+          label: "Dashboard",
+          href: "/dashboard/",
           variant: "ghost",
-          styles: { bg: "brand.secondary", color: "white" },
+          styles: { bg: "brand.primary", color: "white" },
         },
       ]
     : NAV_ITEMS;
@@ -125,7 +124,13 @@ const Navbar = () => {
             </div>
           ))}
           {loggedUser ? (
-            <Button onClick={signOut} colorScheme="blackAlpha">
+            <Button
+              onClick={signOut}
+              bgColor="brand.secondary"
+              color="white"
+              fontSize="sm"
+              fontWeight={400}
+            >
               Sign Out
             </Button>
           ) : null}

@@ -77,10 +77,11 @@ const SignUpCard = () => {
 
               <Stack spacing={10}>
                 <Button
-                  bg={"brand.secondary"}
+                  bg={"brand.primary"}
                   color={"white"}
                   _hover={{
-                    bg: "brand.secondary",
+                    bg: "brand.primary.400",
+                    opacity: 0.4,
                   }}
                   type="submit"
                 >
