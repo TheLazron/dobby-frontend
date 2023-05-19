@@ -4,6 +4,8 @@ import App from "./App.tsx";
 import { ChakraProvider } from "@chakra-ui/react";
 import customTheme from "./styles/theme.ts";
 import "./styles/index.css";
+import { SWRConfig } from "swr";
+
 import { AuthProvider } from "./context/userContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

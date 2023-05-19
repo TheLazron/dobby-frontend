@@ -1,5 +1,6 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 import UserProfileHeader from "../components/UserProfileHeader";
 import AddImageModal from "../components/AddImageModal";
 import { loggedUser, useAuth } from "../context/userContext";
@@ -12,24 +13,18 @@ import { Blog } from "../types/imageType";
 const Dashboard = () => {
   const [images, setImages] = useState([]);
   const { jwtToken } = useAuth();
+  const { data, mutate } = useSWR(
+    "http://localhost:3700/get-my-images",
+    (url) =>
+      makeAuthenticatedRequest(url, {}, "GET", jwtToken).then((res) => {
+        console.log("swr", data);
+
+        setImages(res.data);
+      })
+  );
 
   const { getCurrentUser } = useAuth();
   const user: loggedUser = getCurrentUser();
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      const data = await makeAuthenticatedRequest(
-        "http://localhost:3700/get-my-images",
-        {},
-        "GET",
-        jwtToken
-      );
-      console.log(data);
-      setImages(data.data);
-    };
-
-    fetchBlogs();
-  }, []);
 
   if (!user) {
     return (
@@ -60,7 +55,7 @@ const Dashboard = () => {
       >
         <UserProfileHeader
           username={user.name!}
-          imageCount={user.imageCount!}
+          imageCount={images.length!}
           email={user.email!}
         />
       </Box>
@@ -69,8 +64,14 @@ const Dashboard = () => {
         <AddImageModal />
       </Flex>
       <DividerComponent />
-      <Flex flex="1" w="100%" justifyContent={"center"} alignItems="center">
-        {user.imageCount ? (
+      <Flex
+        flex="1"
+        w="100%"
+        justifyContent={"center"}
+        alignItems="center"
+        mx={2}
+      >
+        {images.length > 0 ? (
           <ImageGridComponent images={images as Blog[]} />
         ) : (
           <NoImageComponent />

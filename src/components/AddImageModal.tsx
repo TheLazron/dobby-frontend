@@ -1,5 +1,6 @@
 import {
   Button,
+  Flex,
   FormControl,
   FormLabel,
   Input,
@@ -15,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
+import { mutate } from "swr";
 import { uploadImageRequest } from "../utils/axiosUtils";
 import { useAuth } from "../context/userContext";
 import UploadProgressElement from "./ui/uploadProgressElement";
@@ -49,6 +51,7 @@ const AddImageModal = () => {
       await uploadImageRequest(formData, "POST", jwtToken, (percentage) => {
         setUploadProgress(percentage);
       });
+      mutate("http://localhost:3700/get-my-images");
       onClose();
       setUploadProgress(0);
     } else {
@@ -67,29 +70,36 @@ const AddImageModal = () => {
 
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent gap={5}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <ModalHeader>Create a New Blog</ModalHeader>
+            <ModalHeader>Add New Image</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
-              <FormControl>
-                <FormLabel>Image Name</FormLabel>
-                <Input
-                  placeholder="Image Name"
-                  type="text"
-                  {...register("imageName", {
-                    required: true,
-                  })}
-                />
-                {errors.imageName && (
-                  <span className="text-red-300">Enter a valid input</span>
-                )}
-                <Input type="file" onChange={handleFileChange} mb={4} />
-                {uploadProgress && (
-                  <UploadProgressElement progress={uploadProgress} />
-                )}
-              </FormControl>
-              <Text>{fileUploadError ?? ""}</Text>
+              <Flex gap={4} direction="column">
+                <FormControl>
+                  <FormLabel>Image Name</FormLabel>
+                  <Input
+                    placeholder="Image Name"
+                    type="text"
+                    {...register("imageName", {
+                      required: true,
+                    })}
+                  />
+                  {errors.imageName && (
+                    <span className="text-red-300">Enter a valid input</span>
+                  )}
+                  <Input type="file" onChange={handleFileChange} mt={4} />
+                </FormControl>
+                <Flex justifyContent={"space-around"} alignItems={"center"}>
+                  {uploadProgress ? (
+                    <>
+                      <Text fontWeight={"bold"}>Progress: </Text>
+                      <UploadProgressElement progress={uploadProgress} />
+                    </>
+                  ) : null}
+                </Flex>
+                {/* <Text>{fileUploadError ?? ""}</Text> */}
+              </Flex>
             </ModalBody>
 
             <ModalFooter>
