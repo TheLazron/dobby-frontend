@@ -41,7 +41,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       }
     );
     console.log(data);
-    window.location.href = "/auth/login";
   };
 
   // Log in logic
