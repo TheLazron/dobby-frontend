@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [images, setImages] = useState([]);
   const { jwtToken } = useAuth();
   const { data, mutate } = useSWR(
-    "http://localhost:3700/get-my-images",
+    "https://dobby-backend-production.up.railway.app/get-my-images",
     (url) =>
       makeAuthenticatedRequest(url, {}, "GET", jwtToken).then((res) => {
         console.log("swr", data);

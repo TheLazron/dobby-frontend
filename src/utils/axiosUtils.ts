@@ -42,7 +42,7 @@ const uploadImageRequest = async (
 ) => {
   await axios({
     method,
-    url: "http://localhost:3700/upload-image",
+    url: "https://dobby-backend-production.up.railway.app/upload-image",
     data,
     headers: {
       Authorization: "Bearer " + token,

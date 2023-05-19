@@ -51,7 +51,7 @@ const AddImageModal = () => {
       await uploadImageRequest(formData, "POST", jwtToken, (percentage) => {
         setUploadProgress(percentage);
       });
-      mutate("http://localhost:3700/get-my-images");
+      mutate("https://dobby-backend-production.up.railway.app/get-my-images");
       onClose();
       setUploadProgress(0);
     } else {

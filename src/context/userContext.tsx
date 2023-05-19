@@ -32,21 +32,27 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const signUp = async (name: string, email: string, password: string) => {
     console.log("singup func", email);
 
-    const data = await makeAxiosPostRequest(`http://localhost:3700/signup`, {
-      username: name,
-      email,
-      password,
-    });
+    const data = await makeAxiosPostRequest(
+      `https://dobby-backend-production.up.railway.app/signup`,
+      {
+        username: name,
+        email,
+        password,
+      }
+    );
     console.log(data);
     window.location.href = "/auth/login";
   };
 
   // Log in logic
   const logIn = async (email: string, password: string) => {
-    const data = await makeAxiosPostRequest("http://localhost:3700/login", {
-      email,
-      password,
-    });
+    const data = await makeAxiosPostRequest(
+      "https://dobby-backend-production.up.railway.app/login",
+      {
+        email,
+        password,
+      }
+    );
     console.log("loggedUser Data", data);
     setJwtToken(data.user.token);
     setCurrentUser({ id: data.user.userId as string });
@@ -59,7 +65,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const id = data.user.userId;
 
       const userData = await makeAuthenticatedRequest(
-        `http://localhost:3700/get-user/${id}`,
+        `https://dobby-backend-production.up.railway.app/get-user/${id}`,
         {},
         "GET",
         jwtToken
