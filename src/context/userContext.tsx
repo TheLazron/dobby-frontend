@@ -54,37 +54,37 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       console.log(currentUser.id);
     }
 
-    // try {
-    //   const jwtToken = data.user.token;
-    //   const id = data.user.userId;
+    try {
+      const jwtToken = data.user.token;
+      const id = data.user.userId;
 
-    //   const userData = await makeAuthenticatedRequest(
-    //     `http://localhost:3700/get-user/${id}`,
-    //     {},
-    //     "GET",
-    //     jwtToken
-    //   );
-    //   console.log("got User", userData.data.email);
-    //   setCurrentUser((prevUser) => {
-    //     return {
-    //       ...prevUser,
-    //       id: userData.data.id,
-    //       name: userData.data.name,
-    //       email: userData.data.email,
-    //       profileUrl: userData.data.profileUrl,
-    //       blogCount: userData.data.blogCount,
-    //     };
-    //   });
-    // } catch (error) {
-    //   // Handle error if the second request fails
-    //   console.log("Error retrieving user data:", error);
-    // }
+      const userData = await makeAuthenticatedRequest(
+        `http://localhost:3700/get-user/${id}`,
+        {},
+        "GET",
+        jwtToken
+      );
+      console.log("got User", userData.data.email);
+      setCurrentUser((prevUser) => {
+        return {
+          ...prevUser,
+          id: userData.data.id,
+          name: userData.data.name,
+          email: userData.data.email,
+          profileUrl: userData.data.profileUrl,
+          imageCount: userData.data.imageCount,
+        };
+      });
+    } catch (error) {
+      // Handle error if the second request fails
+      console.log("Error retrieving user data:", error);
+    }
   };
 
   // Sign out logic
   const signOut = () => {
     setCurrentUser(null);
-    window.location.href = "/home";
+    window.location.href = "/auth/login";
   };
 
   // Get the current user

@@ -1,5 +1,10 @@
 // import UploadImageComponent from "./components/UploadImageComponent";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import NavLayout from "./layout/NavLayout";
 import AuthPage from "./pages/AuthenticationPage";
 import LoginCard from "./components/LoginCard";
@@ -10,6 +15,7 @@ function App() {
     <Router>
       <NavLayout>
         <Routes>
+          <Route path="/" element={<Navigate to="/auth/login" />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/auth" element={<AuthPage />}>
             <Route path="login" element={<LoginCard />} />

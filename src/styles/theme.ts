@@ -3,8 +3,8 @@ import { extendTheme } from "@chakra-ui/react";
 const colors = {
   brand: {
     primary: "#3BC788",
-    secondary: "#1C1C1C",
-    white: "#666666",
+    secondary: "#303030",
+    white: "#888888",
   },
 };
 

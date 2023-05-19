@@ -55,7 +55,7 @@ const UserProfileHeader = ({
 
           <Text as="span" fontWeight="normal" color="white">
             Image Count:
-            {imageCount && (
+            {email && (
               <Text
                 ml={2}
                 as="span"

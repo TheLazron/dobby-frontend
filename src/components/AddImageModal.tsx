@@ -37,6 +37,8 @@ const AddImageModal = () => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    console.log(data.imageName);
+
     if (selectedFile) {
       const file = selectedFile;
       const formData = new FormData();

@@ -22,7 +22,7 @@ const makeAuthenticatedRequest = async (
 
     const response = await axios({
       method: method,
-      url: "url",
+      url,
       data: data,
       headers: { Authorization: "Bearer " + token },
     });
