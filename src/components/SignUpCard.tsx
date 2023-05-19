@@ -8,6 +8,7 @@ import {
   Stack,
   Button,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/userContext";
 
 type FormValues = {
@@ -18,13 +19,15 @@ type FormValues = {
 
 const SignUpCard = () => {
   const { signUp } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    signUp(data.username, data.email, data.password);
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    await signUp(data.username, data.email, data.password);
+    navigate("/auth/login");
   };
 
   return (
