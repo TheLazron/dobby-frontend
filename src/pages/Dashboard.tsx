@@ -8,7 +8,7 @@ import { makeAuthenticatedRequest } from "../utils/axiosUtils";
 import DividerComponent from "../components/ui/Divider";
 import NoImageComponent from "../components/NoImageComponent";
 import ImageGridComponent from "../components/ImageGridComponent";
-import { Blog } from "../types/imageType";
+import { Image } from "../types/imageType";
 
 const Dashboard = () => {
   const [images, setImages] = useState([]);
@@ -72,7 +72,7 @@ const Dashboard = () => {
         mx={2}
       >
         {images.length > 0 ? (
-          <ImageGridComponent images={images as Blog[]} />
+          <ImageGridComponent images={images as Image[]} />
         ) : (
           <NoImageComponent />
         )}
