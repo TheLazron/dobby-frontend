@@ -18,7 +18,7 @@ const ImageGridComponent = ({ images }: ImageGridComponentProps) => {
   console.log("images inside image Grid", images);
 
   const { data: searchData, isValidating } = useSWR(
-    `https://dobby-backend-production.up.railway.app/search-images?searchString=${searchText}`,
+    `https://dobby-backend-production-104f.up.railway.app/search-images?searchString=${searchText}`,
     (url) =>
       makeAuthenticatedRequest(url, {}, "POST", jwtToken).then(
         (res) => res.data
