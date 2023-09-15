@@ -52,7 +52,7 @@ const AddImageModal = () => {
         setUploadProgress(percentage);
       });
       mutate(
-        "https://dobby-backend-production-104f.up.railway.app/get-my-images"
+        "https://dobby-backend-production-c01b.up.railway.app/get-my-images"
       );
       onClose();
       setUploadProgress(0);

@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     console.log("singup func", email);
 
     const data = await makeAxiosPostRequest(
-      `https://dobby-backend-production-104f.up.railway.app/signup`,
+      `https://dobby-backend-production-c01b.up.railway.app/signup`,
       {
         username: name,
         email,
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   // Log in logic
   const logIn = async (email: string, password: string) => {
     const data = await makeAxiosPostRequest(
-      "https://dobby-backend-production-104f.up.railway.app/login",
+      "https://dobby-backend-production-c01b.up.railway.app/login",
       {
         email,
         password,
@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const id = data.user.userId;
 
       const userData = await makeAuthenticatedRequest(
-        `https://dobby-backend-production-104f.up.railway.app/get-user/${id}`,
+        `https://dobby-backend-production-c01b.up.railway.app/get-user/${id}`,
         {},
         "GET",
         jwtToken
